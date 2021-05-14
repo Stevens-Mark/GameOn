@@ -8,6 +8,15 @@
   margin: 0;
   padding: 0;
 }
+
+
+/*ADDED STYLES*/
+
+.error {
+  color: red;
+  font-size: 16px;
+}
+
 /* Landing Page */
 
 body {
