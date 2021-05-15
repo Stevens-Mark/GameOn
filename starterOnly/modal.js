@@ -108,8 +108,16 @@ document.getElementById("quantity").addEventListener("blur", function(e){
 });
 
 
+/*
+ * RADIO BUTTON EVENT LISTENERS
+ */
+const radioButtons = document.getElementsByName('location');
 
-
+for (let i = 0; i < radioButtons.length; i++) {
+  radioButtons[i].addEventListener('change', ($event) => {
+    locationError.textContent = $event.target.value;
+  });
+}
 /* check first & last name fields are valid
 
 function checkString(string){
