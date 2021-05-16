@@ -51,14 +51,14 @@ function checkString(string, name){
   } 
 };
 
-document.getElementById("first").addEventListener("change", ($event) => {
+document.getElementById("first").addEventListener("blur", ($event) => {
   checkString($event.target.value, firstNameError)});
 
-document.getElementById("last").addEventListener("change", ($event) => {
+document.getElementById("last").addEventListener("blur", ($event) => {
   checkString($event.target.value, lastNameError)});
 
 // CHECK EMAIL IS VALID
-document.getElementById("email").addEventListener("change", ($event) => {
+document.getElementById("email").addEventListener("blur", ($event) => {
   if (!emailRegex.test($event.target.value)) {
     emailError.textContent ='Veuillez entrer une adresse e-mail valide dans le champ e-mail.';
   } else {
@@ -67,7 +67,7 @@ document.getElementById("email").addEventListener("change", ($event) => {
 });
 
 // CHECK BIRTHDAY ENTERED & VALID
-document.getElementById("birthdate").addEventListener("change", ($event) => {
+document.getElementById("birthdate").addEventListener("blur", ($event) => {
   if ($event.target.value.length == 0) {
     birthDateError.textContent ='Vous devez entrer votre date de naissance.';
   } else if (AgeNotValidate($event.target.value)) {
@@ -95,7 +95,7 @@ if(userAge < 13 || userAge > 100 ) {
 };
 
 // CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED & VALID
-document.getElementById("quantity").addEventListener("change", ($event) => {
+document.getElementById("quantity").addEventListener("blur", ($event) => {
   let quantity = $event.target.value;
   if (quantity === ''){
     quantityError.textContent ='Vous devez choisir une option.';
@@ -122,7 +122,6 @@ for (let i = 0; i < radioButtons.length; i++) {
   }
 }
 
-
 //POLICY CHECKBOX EVENT LISTENER
 document.getElementById("checkbox1").addEventListener('change', ($event) => {
   if (!$event.target.checked) {
@@ -135,34 +134,19 @@ document.getElementById("checkbox1").addEventListener('change', ($event) => {
 
 
 
-function checkedOk(){
-  for (let i = 0; i < radioButtons.length; i++) {
-      if (!radioButtons[i].checked) {
-          locationError.textContent = 'Vous devez choisir une option.';
-          valid = false;
-      } else {
-          locationError.textContent = ' ';
-          valid = true;
-        }
-  }
-}
-
-
-/*
 function validate(e) {
   e.preventDefault();
 	valid = true;
-        const firstCheck = document.getElementById("first");
-    if (firstCheck.length < 2) {
-      fnameError.textContent = firstCheck.value;
-      
+        const firstCheck = document.getElementById('first');
+    if (document.reserve.first.value.length == 0) {
+      checkString(document.reserve.first, lastNameError);    
       valid = false;
     }
-    if (document.reserve.last.value < 2) {
-        checkString(e.target.value, lastNameError);
+    if (document.reserve.last.value == "") {
+        checkString(document.reserve.first, lastNameError);
         valid = false;
     }
-    if (document.reserve.birthdate.length == 0 ){
+    if (document.reserve.birthdate.value.length == 0 ){
       birthDateError.textContent ='Please check';
       valid = false;
     } 
@@ -185,27 +169,15 @@ function validate(e) {
     return valid;
 }
 
-
-/* check first & last name fields are valid
-
-function checkString(string){
-  if (!/[a-zA-Z]{2,30}/.test(string)){
-    return true;
-  } 
-};
-
-document.getElementById("first").addEventListener("blur", function(e){
-  if (checkString(e.target.value)) {
-    firstNameError.textContent ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-  } else {
-    firstNameError.textContent ='';
+/*
+function checkedOk(){
+  for (let i = 0; i < radioButtons.length; i++) {
+      if (!radioButtons[i].checked) {
+          locationError.textContent = 'Vous devez choisir une option.';
+          valid = false;
+      } else {
+          locationError.textContent = ' ';
+          valid = true;
+        }
   }
-});
-
-document.getElementById("last").addEventListener("blur", function(e){
-  if (checkString(e.target.value)) {
-    lastNameError.textContent ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-  } else {
-    lastNameError.textContent ='';
-  }
-});*/
+}*/
