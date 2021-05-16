@@ -13,18 +13,17 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
 
-
 // DOM Elements for error messages
 const firstNameError = document.getElementById("fnameError");
 const lastNameError = document.getElementById("lastnameError");
 const emailError = document.getElementById("emailError");
 const birthDateError = document.getElementById("birthDateError");
 const quantityError = document.getElementById("quantityError");
-
+const locationError = document.getElementById("locationError");
+const conditionsError = document.getElementById("conditionsError");
 
 // Pattern for email validation check
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -42,41 +41,40 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
 // CHECK FIRST & LAST NAMES ARE VALID
-
 function checkString(string, name){
   if (!/^[a-zA-Z]{2,30}$/.test(string)){
-    name.innerText ='Veuillez entrer 2 caractères ou plus pour ce champ (sans chiffres, espaces ou caractères spéciaux).';
+    name.textContent ='Veuillez entrer 2 caractères ou plus pour ce champ (sans chiffres, espaces ou caractères spéciaux).';
+    
   } else {
-    name.innerText ='';
+    name.textContent ='';
   } 
 };
 
-document.getElementById("first").addEventListener("blur", function(e){
-  checkString(e.target.value, firstNameError)});
+document.getElementById("first").addEventListener("change", ($event) => {
+  checkString($event.target.value, firstNameError)});
 
-document.getElementById("last").addEventListener("blur", function(e){
-  checkString(e.target.value, lastNameError)});
-
+document.getElementById("last").addEventListener("change", ($event) => {
+  checkString($event.target.value, lastNameError)});
 
 // CHECK EMAIL IS VALID
-document.getElementById("email").addEventListener("blur", function(e){
-  if (!emailRegex.test(e.target.value)) {
-    emailError.innerText ='Veuillez entrer une adresse e-mail valide dans le champ e-mail.';
+document.getElementById("email").addEventListener("change", ($event) => {
+  if (!emailRegex.test($event.target.value)) {
+    emailError.textContent ='Veuillez entrer une adresse e-mail valide dans le champ e-mail.';
   } else {
-    emailError.innerText ='';
+    emailError.textContent ='';
   }
 });
 
 // CHECK BIRTHDAY ENTERED & VALID
-document.getElementById("birthdate").addEventListener("blur", function(e){
-  if (e.target.value.length == 0) {
-    birthDateError.innerText ='Vous devez entrer votre date de naissance.';
-  } else if (AgeNotValidate(e.target.value)) {
-    birthDateError.innerText ='Veuillez vérifier votre date de naissance.';
+document.getElementById("birthdate").addEventListener("change", ($event) => {
+  if ($event.target.value.length == 0) {
+    birthDateError.textContent ='Vous devez entrer votre date de naissance.';
+  } else if (AgeNotValidate($event.target.value)) {
+    birthDateError.textContent ='Veuillez vérifier votre date de naissance.';
+    valid = false;
         } else{
-          birthDateError.innerText =' ';}
+          birthDateError.textContent =' ';}
 });
 
 //Function checks age more than 13yrs (Fortnite competitive age) & less than 100yrs
@@ -97,20 +95,17 @@ if(userAge < 13 || userAge > 100 ) {
 };
 
 // CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED & VALID
-document.getElementById("quantity").addEventListener("blur", function(e){
-  let quantity = e.target.value;
+document.getElementById("quantity").addEventListener("change", ($event) => {
+  let quantity = $event.target.value;
   if (quantity === ''){
-    quantityError.innerText ='Vous devez choisir une option.';
-    } else if (quantity < 0 || quantity > 500) {
-        quantityError.innerText ='Veuillez choisir un nombre entre 0 et 500.';
+    quantityError.textContent ='Vous devez choisir une option.';
+    } else if (quantity < 0 || quantity > 200) {
+        quantityError.textContent ='Veuillez choisir un nombre entre 0 et 200.';
       } else {
-        quantityError.innerText =' ';}
+        quantityError.textContent =' ';}
 });
 
-
-/*
- * RADIO BUTTON EVENT LISTENERS
- */
+//RADIO BUTTON EVENT LISTENERS
 const radioButtons = document.getElementsByName('location');
 
 for (let i = 0; i < radioButtons.length; i++) {
@@ -118,6 +113,79 @@ for (let i = 0; i < radioButtons.length; i++) {
     locationError.textContent = $event.target.value;
   });
 }
+
+for (let i = 0; i < radioButtons.length; i++) {
+  if (!radioButtons[i].checked) {
+    locationError.textContent = 'Vous devez choisir une option';
+  } else {
+    locationError.textContent = ' ';
+  }
+}
+
+
+//POLICY CHECKBOX EVENT LISTENER
+document.getElementById("checkbox1").addEventListener('change', ($event) => {
+  if (!$event.target.checked) {
+    conditionsError.textContent = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+  }
+  else {
+    conditionsError.textContent = '';
+  }
+});
+
+
+
+function checkedOk(){
+  for (let i = 0; i < radioButtons.length; i++) {
+      if (!radioButtons[i].checked) {
+          locationError.textContent = 'Vous devez choisir une option.';
+          valid = false;
+      } else {
+          locationError.textContent = ' ';
+          valid = true;
+        }
+  }
+}
+
+
+/*
+function validate(e) {
+  e.preventDefault();
+	valid = true;
+        const firstCheck = document.getElementById("first");
+    if (firstCheck.length < 2) {
+      fnameError.textContent = firstCheck.value;
+      
+      valid = false;
+    }
+    if (document.reserve.last.value < 2) {
+        checkString(e.target.value, lastNameError);
+        valid = false;
+    }
+    if (document.reserve.birthdate.length == 0 ){
+      birthDateError.textContent ='Please check';
+      valid = false;
+    } 
+    if (document.reserve.email.value === ""){
+        emailError.textContent ='Veuillez entrer une adresse e-mail';
+        valid = false;
+    }    
+    if (document.reserve.quantity.value === ""){
+        quantityError.textContent ='Vous devez choisir une option.';
+        valid = false;
+    }
+    if (document.reserve.location.value === ""){
+        locationError.textContent ='Vous devez choisir une option';
+        valid = false;
+    }
+    if (document.reserve.checkbox1.checked == false ) {
+        conditionsError.textContent = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+        valid = false;
+    }
+    return valid;
+}
+
+
 /* check first & last name fields are valid
 
 function checkString(string){
@@ -128,17 +196,16 @@ function checkString(string){
 
 document.getElementById("first").addEventListener("blur", function(e){
   if (checkString(e.target.value)) {
-    firstNameError.innerText ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+    firstNameError.textContent ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
   } else {
-    firstNameError.innerText ='';
+    firstNameError.textContent ='';
   }
 });
 
 document.getElementById("last").addEventListener("blur", function(e){
   if (checkString(e.target.value)) {
-    lastNameError.innerText ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+    lastNameError.textContent ='Veuillez entrer 2 caractères ou plus pour le champ du nom.';
   } else {
-    lastNameError.innerText ='';
+    lastNameError.textContent ='';
   }
 });*/
-
