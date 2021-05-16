@@ -138,7 +138,7 @@ function validate(e) {
   e.preventDefault();
 	valid = true;
         const firstCheck = document.getElementById('first');
-    if (document.reserve.first.value.length == 0) {
+    if (firstCheck.value.length == 0) {
       checkString(document.reserve.first, lastNameError);    
       valid = false;
     }

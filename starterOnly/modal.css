@@ -40,10 +40,17 @@ img {
   padding-right: 1rem;
 }
 
+
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+    overflow: hidden;
+    margin: 3.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
+
+
 .header-logo {
     float: left;
 }
@@ -84,6 +91,11 @@ img {
     float: right;
     display: block;
   }
+  .topnav {
+    justify-content: space-between;
+    font-size: 18px;
+    align-items: flex-start;
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -100,14 +112,11 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -430,7 +439,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /*min-width: 424px;*/
 }
 .hero-content::after {
   content: "";
@@ -504,14 +513,18 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
-    font-size: 4.5rem;
     white-space: normal;
+    font-size: 3.5rem;
   }
-  .hero-text {
+
+   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 20px;
+    margin-top: 20px;
   }
+
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
@@ -537,3 +550,73 @@ footer {
   }
 }
 
+
+
+@media screen and (max-width: 1108px) {
+
+.topnav {
+    justify-content: center;
+    font-size: 18px;
+  }
+  .topnav a {
+    float: left;
+    font-size:18px;
+
+}
+.hero-headline {
+    font-size: 4.5rem;
+  }
+
+.hero-content {
+    font-size: 18px;
+  }
+    
+.btn-signup {
+      font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+.topnav {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+.hero-headline {
+  font-size: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+.topnav {
+  justify-content: space-between;
+  
+}
+
+.header-logo > img{
+  width: 190px;
+  margin-left: 16px;
+  margin-top: 5px;
+}
+
+.topnav a {
+ padding: 5px 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+main {
+  margin: 1px 10px 15px;
+  }
+.hero-headline {
+    font-size: 2rem;
+}
+}
