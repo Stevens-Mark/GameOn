@@ -12,7 +12,14 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
-const radioButtons = document.getElementsByName("location");
+let radioButtons = document.getElementsByName("location");
+
+const modalBody = document.querySelectorAll(".modal-body");
+const thanksMessage = document.getElementById("thanksmessage");
+
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
 
 // DOM Elements for error messages
 const firstNameError = document.getElementById("fnameError");
@@ -22,6 +29,8 @@ const birthDateError = document.getElementById("birthDateError");
 const quantityError = document.getElementById("quantityError");
 const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
+
+const testError = document.getElementById("testError");
 
 //Pattern for name & email validation checks
 const nameRegex = /^[a-zA-Z]{2,30}$/;
@@ -53,14 +62,14 @@ function checkString(string, name){
 }
 
 // FIRSTNAME & LASTNAME EVENT LISTENERS
-document.getElementById("first").addEventListener("blur", ($event) => {
+firstName.addEventListener("blur", ($event) => {
   checkString($event.target.value, firstNameError)});
 
-document.getElementById("last").addEventListener("blur", ($event) => {
+lastName.addEventListener("blur", ($event) => {
   checkString($event.target.value, lastNameError)});
 
 // CHECK EMAIL IS VALID
-document.getElementById("email").addEventListener("blur", ($event) => {
+email.addEventListener("blur", ($event) => {
   if (!emailRegex.test($event.target.value)) {
     emailError.textContent ="Veuillez entrer une adresse e-mail valide.";
   } else {
@@ -109,17 +118,29 @@ document.getElementById("quantity").addEventListener("blur", ($event) => {
 //RADIO BUTTON EVENT LISTENERS
 for (let i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener("change", ($event) => {
-    locationError.textContent = $event.target.value;
+    testError.textContent = $event.target.value;
+    RadioChecked();
   });
 }
+
+/*
+function RadioChecked(){
+var getSelectedValue = document.querySelectorAll( 'input[name="location"]:checked'); 
+if(getSelectedValue = null) {   
+  locationError.textContent = "Vous devez choisir une option.";
+  return false; 
+}else {  
+  locationError.textContent = "test";
+  return true;  }
+}*/
 
 function RadioChecked(){
   for (let i = 0; i < radioButtons.length; i++) {
       if (!radioButtons[i].checked) {
-          locationError.textContent = 'Vous devez choisir une option.';
-          return false
+          locationError.textContent = "Vous devez choisir une option.";
+          return false;
       } else {
-          locationError.textContent = ' ';
+          locationError.textContent = "";
           return true;
         }
   }
@@ -137,21 +158,21 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 
 // FORM VALIDATION FUNCTION
 function validate() {
-    if (!document.reserve.first.value) {
+    if (document.reserve.first.value =="") {
       fnameError.textContent ="Veuillez entrer votre prénom";
       document.reserve.first.focus();
       return false;
     }
-    if (!document.reserve.last.value) {
+    if (document.reserve.last.value =="") {
       lastnameError.textContent ="Veuillez entrer votre prénom";
       document.reserve.last.focus();
       return false;
     }
-    if (!document.reserve.email.value){
+    if (document.reserve.email.value ==""){
       emailError.textContent ="Veuillez entrer votre adresse e-mail";
       return false;
     } 
-    if (!document.reserve.birthdate.value || AgeNotValidate(document.reserve.birthdate.value)){
+    if (document.reserve.birthdate.value =="" || AgeNotValidate(document.reserve.birthdate.value)){
       birthDateError.textContent ="Veuillez vérifier votre date de naissance. (âge min/max: 13/100 ans)";
       document.reserve.birthdate.focus();
       return false;
@@ -161,8 +182,8 @@ function validate() {
       document.reserve.quantity.focus();
       return false;
     }
-    if (!RadioChecked) {
-        locationError.textContent = "Vous devez choisir une option";
+    if (!RadioChecked()) {
+        locationError.textContent = "Vous devez choisir une option.";
         return false;
     }
     if (document.reserve.checkbox1.checked == false ) {
@@ -171,7 +192,14 @@ function validate() {
       return false;
     }
 return true;
+
 }
+
+function displayThanksMessage(){
+  modalBody.style.display = "none";
+  thanksmessage.style.display = "flex";
+}
+
 
 /*
 for (let i = 0; i < radioButtons.length; i++) {

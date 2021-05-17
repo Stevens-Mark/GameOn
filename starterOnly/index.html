@@ -54,8 +54,11 @@
       <div class="bground">
         <div class="content">
           <span class="close"></span>
+          <div id='message'>
+            <h1>Merci ! Votre réservation a été reçue.</h1>
+          </div>
           <div class="modal-body">
-            <form
+            <form id="form"
               name="reserve"
               action="index.html"
               method="post"
@@ -135,7 +138,7 @@
                   type="radio"
                   id="location1"
                   name="location"
-                  value="New York"
+                  value="New York"  
                   
                 />
                 <label class="checkbox-label" for="location1">
@@ -160,6 +163,7 @@
                   id="location3"
                   name="location"
                   value="Seattle"
+                  
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -171,6 +175,7 @@
                   id="location4"
                   name="location"
                   value="Chicago"
+                  
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
@@ -182,6 +187,7 @@
                   id="location5"
                   name="location"
                   value="Boston"
+                  
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -193,6 +199,7 @@
                   id="location6"
                   name="location"
                   value="Portland"
+                 
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
@@ -200,13 +207,14 @@
                 >
               </div>
               <div id='locationError' class="error"></div>
+              <div id='testError' class="error"></div>
               <div
                 class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  required
+                  checked
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
