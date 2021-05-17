@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
+const radioButtons = document.getElementsByName("location");
 
 // DOM Elements for error messages
 const firstNameError = document.getElementById("fnameError");
@@ -22,7 +23,8 @@ const quantityError = document.getElementById("quantityError");
 const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
 
-// Pattern for email validation check
+//Pattern for name & email validation checks
+const nameRegex = /^[a-zA-Z]{2,30}$/;
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 // launch modal event
@@ -41,16 +43,16 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// CHECK FIRST & LAST NAMES ARE VALID
+// CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
-  if (!/^[a-zA-Z]{2,30}$/.test(string)){
-    name.textContent ='Veuillez entrer 2 caractères ou plus pour ce champ (sans chiffres, espaces ou caractères spéciaux).';
-    
+  if (!nameRegex.test(string)){
+    name.textContent ="Veuillez entrer 2 caractères ou plus pour ce champ.";
   } else {
-    name.textContent ='';
+    name.textContent ="";
   } 
-};
+}
 
+// FIRSTNAME & LASTNAME EVENT LISTENERS
 document.getElementById("first").addEventListener("blur", ($event) => {
   checkString($event.target.value, firstNameError)});
 
@@ -60,24 +62,23 @@ document.getElementById("last").addEventListener("blur", ($event) => {
 // CHECK EMAIL IS VALID
 document.getElementById("email").addEventListener("blur", ($event) => {
   if (!emailRegex.test($event.target.value)) {
-    emailError.textContent ='Veuillez entrer une adresse e-mail valide dans le champ e-mail.';
+    emailError.textContent ="Veuillez entrer une adresse e-mail valide.";
   } else {
-    emailError.textContent ='';
+    emailError.textContent ="";
   }
 });
 
 // CHECK BIRTHDAY ENTERED & VALID
 document.getElementById("birthdate").addEventListener("blur", ($event) => {
   if ($event.target.value.length == 0) {
-    birthDateError.textContent ='Vous devez entrer votre date de naissance.';
+    birthDateError.textContent ="Vous devez entrer votre date de naissance.";
   } else if (AgeNotValidate($event.target.value)) {
-    birthDateError.textContent ='Veuillez vérifier votre date de naissance.';
-    valid = false;
+    birthDateError.textContent ="Veuillez vérifier votre date de naissance.";
         } else{
-          birthDateError.textContent =' ';}
+          birthDateError.textContent ="";}
 });
 
-//Function checks age more than 13yrs (Fortnite competitive age) & less than 100yrs
+// Function checks age more than 13yrs (Fortnite competitive age) & less than 100yrs
 function AgeNotValidate(birthday){
 // it will accept two types of format yyyy-mm-dd and yyyy/mm/dd
 let optimizedBirthday = birthday.replace(/-/g, "/");
@@ -90,94 +91,93 @@ let userAge = ~~((Date.now() - userBirthday) / (31557600000));
 if(userAge < 13 || userAge > 100 ) {
   return true;
   } else {
-	  return false;
+return false;
 	}
-};
+}
 
-// CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED & VALID
+// CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED IS VALID
 document.getElementById("quantity").addEventListener("blur", ($event) => {
   let quantity = $event.target.value;
   if (quantity === ''){
-    quantityError.textContent ='Vous devez choisir une option.';
+    quantityError.textContent ="Vous devez choisir une option.";
     } else if (quantity < 0 || quantity > 200) {
-        quantityError.textContent ='Veuillez choisir un nombre entre 0 et 200.';
+        quantityError.textContent ="Veuillez choisir un nombre entre 0 et 200.";
       } else {
-        quantityError.textContent =' ';}
+        quantityError.textContent ="";}
 });
 
 //RADIO BUTTON EVENT LISTENERS
-const radioButtons = document.getElementsByName('location');
-
 for (let i = 0; i < radioButtons.length; i++) {
-  radioButtons[i].addEventListener('change', ($event) => {
+  radioButtons[i].addEventListener("change", ($event) => {
     locationError.textContent = $event.target.value;
   });
 }
 
-for (let i = 0; i < radioButtons.length; i++) {
-  if (!radioButtons[i].checked) {
-    locationError.textContent = 'Vous devez choisir une option';
-  } else {
-    locationError.textContent = ' ';
+function RadioChecked(){
+  for (let i = 0; i < radioButtons.length; i++) {
+      if (!radioButtons[i].checked) {
+          locationError.textContent = 'Vous devez choisir une option.';
+          return false
+      } else {
+          locationError.textContent = ' ';
+          return true;
+        }
   }
 }
 
 //POLICY CHECKBOX EVENT LISTENER
-document.getElementById("checkbox1").addEventListener('change', ($event) => {
+document.getElementById("checkbox1").addEventListener("change", ($event) => {
   if (!$event.target.checked) {
-    conditionsError.textContent = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+    conditionsError.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
   }
   else {
-    conditionsError.textContent = '';
+    conditionsError.textContent = "";
   }
 });
 
-
-
-function validate(e) {
-  e.preventDefault();
-	valid = true;
-        const firstCheck = document.getElementById('first');
-    if (firstCheck.value.length == 0) {
-      checkString(document.reserve.first, lastNameError);    
-      valid = false;
+// FORM VALIDATION FUNCTION
+function validate() {
+    if (!document.reserve.first.value) {
+      fnameError.textContent ="Veuillez entrer votre prénom";
+      document.reserve.first.focus();
+      return false;
     }
-    if (document.reserve.last.value == "") {
-        checkString(document.reserve.first, lastNameError);
-        valid = false;
+    if (!document.reserve.last.value) {
+      lastnameError.textContent ="Veuillez entrer votre prénom";
+      document.reserve.last.focus();
+      return false;
     }
-    if (document.reserve.birthdate.value.length == 0 ){
-      birthDateError.textContent ='Please check';
-      valid = false;
+    if (!document.reserve.email.value){
+      emailError.textContent ="Veuillez entrer votre adresse e-mail";
+      return false;
     } 
-    if (document.reserve.email.value === ""){
-        emailError.textContent ='Veuillez entrer une adresse e-mail';
-        valid = false;
-    }    
-    if (document.reserve.quantity.value === ""){
-        quantityError.textContent ='Vous devez choisir une option.';
-        valid = false;
+    if (!document.reserve.birthdate.value || AgeNotValidate(document.reserve.birthdate.value)){
+      birthDateError.textContent ="Veuillez vérifier votre date de naissance. (âge min/max: 13/100 ans)";
+      document.reserve.birthdate.focus();
+      return false;
     }
-    if (document.reserve.location.value === ""){
-        locationError.textContent ='Vous devez choisir une option';
-        valid = false;
+    if (!document.reserve.quantity.value || quantity < 0 || quantity > 200){
+      quantityError.textContent = "Veuillez choisir un nombre entre 0 et 200.";
+      document.reserve.quantity.focus();
+      return false;
+    }
+    if (!RadioChecked) {
+        locationError.textContent = "Vous devez choisir une option";
+        return false;
     }
     if (document.reserve.checkbox1.checked == false ) {
-        conditionsError.textContent = 'Vous devez vérifier que vous acceptez les termes et conditions.';
-        valid = false;
+      conditionsError.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
+      document.reserve.birthdate.focus();
+      return false;
     }
-    return valid;
+return true;
 }
 
 /*
-function checkedOk(){
-  for (let i = 0; i < radioButtons.length; i++) {
-      if (!radioButtons[i].checked) {
-          locationError.textContent = 'Vous devez choisir une option.';
-          valid = false;
-      } else {
-          locationError.textContent = ' ';
-          valid = true;
-        }
+for (let i = 0; i < radioButtons.length; i++) {
+  if (!radioButtons[i].checked) {
+    locationError.textContent = "Vous devez choisir une option";
+  } else {
+    locationError.textContent = "";
   }
 }*/

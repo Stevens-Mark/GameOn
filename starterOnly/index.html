@@ -58,8 +58,8 @@
             <form
               name="reserve"
               action="index.html"
-              method="get"
-              onsubmit="return validate(e);">
+              method="post"
+              onsubmit="return validate(); novalidate">
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
@@ -122,7 +122,7 @@
                   id="quantity" 
                   name="quantity" 
                   min="0" 
-                  max="500"
+                  max="200"
                   
                 /><br>
                 <div id='quantityError' class="error"></div>
