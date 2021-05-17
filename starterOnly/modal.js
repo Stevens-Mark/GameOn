@@ -12,14 +12,14 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll(".close");
-let radioButtons = document.getElementsByName("location");
 
-const modalBody = document.querySelectorAll(".modal-body");
-const thanksMessage = document.getElementById("thanksmessage");
-
+// DOM Elements for form
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
+let radioButtons = document.getElementsByName("location");
 
 // DOM Elements for error messages
 const firstNameError = document.getElementById("fnameError");
@@ -30,9 +30,13 @@ const quantityError = document.getElementById("quantityError");
 const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
 
+// DOM Elements for Form validation message
+const modalBody = document.querySelectorAll(".modal-body");
+const thanksMessage = document.getElementById("thanksmessage");
+
 const testError = document.getElementById("testError");
 
-//Pattern for name & email validation checks
+//Patterns for name & email validation checks
 const nameRegex = /^[a-zA-Z]{2,30}$/;
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -78,7 +82,7 @@ email.addEventListener("blur", ($event) => {
 });
 
 // CHECK BIRTHDAY ENTERED & VALID
-document.getElementById("birthdate").addEventListener("blur", ($event) => {
+birthdate.addEventListener("blur", ($event) => {
   if ($event.target.value.length == 0) {
     birthDateError.textContent ="Vous devez entrer votre date de naissance.";
   } else if (AgeNotValidate($event.target.value)) {
@@ -105,9 +109,9 @@ return false;
 }
 
 // CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED IS VALID
-document.getElementById("quantity").addEventListener("blur", ($event) => {
+quantity.addEventListener("blur", ($event) => {
   let quantity = $event.target.value;
-  if (quantity === ''){
+  if (quantity == ""){
     quantityError.textContent ="Vous devez choisir une option.";
     } else if (quantity < 0 || quantity > 200) {
         quantityError.textContent ="Veuillez choisir un nombre entre 0 et 200.";
@@ -158,28 +162,29 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 
 // FORM VALIDATION FUNCTION
 function validate() {
-    if (document.reserve.first.value =="") {
+    if (!firstName.value || !nameRegex.test(firstName.value)) {
       fnameError.textContent ="Veuillez entrer votre prénom";
-      document.reserve.first.focus();
+      firstName.focus();
       return false;
     }
-    if (document.reserve.last.value =="") {
+    if (!lastName.value || !nameRegex.test(lastName.value)) {
       lastnameError.textContent ="Veuillez entrer votre prénom";
-      document.reserve.last.focus();
+      lastName.focus();
       return false;
     }
-    if (document.reserve.email.value ==""){
+    if (!email.value || !emailRegex.test(email.value)) {
       emailError.textContent ="Veuillez entrer votre adresse e-mail";
+      email.focus();
       return false;
     } 
-    if (document.reserve.birthdate.value =="" || AgeNotValidate(document.reserve.birthdate.value)){
-      birthDateError.textContent ="Veuillez vérifier votre date de naissance. (âge min/max: 13/100 ans)";
-      document.reserve.birthdate.focus();
+    if (birthdate.value.length == 0 || AgeNotValidate(birthdate.value)){
+      birthDateError.textContent ="Veuillez vérifier votre date de naissance. (âge min: 13 ans)";
+      birthdate.focus();
       return false;
     }
-    if (!document.reserve.quantity.value || quantity < 0 || quantity > 200){
+    if (!quantity.value || quantity < 0 || quantity > 200){
       quantityError.textContent = "Veuillez choisir un nombre entre 0 et 200.";
-      document.reserve.quantity.focus();
+      quantity.focus();
       return false;
     }
     if (!RadioChecked()) {
