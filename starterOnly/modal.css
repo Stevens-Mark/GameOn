@@ -9,10 +9,6 @@
   padding: 0;
 }
 
-
-
-
-
 /* Landing Page */
 
 body {
@@ -35,7 +31,6 @@ img {
   padding-right: 1rem;
 }
 
-
 .topnav {
     overflow: hidden;
     margin: 3.5%;
@@ -44,7 +39,6 @@ img {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
 
 .header-logo {
     float: left;
@@ -90,7 +84,7 @@ img {
     justify-content: space-between;
     font-size: 18px;
     align-items: flex-start;
-}
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -125,8 +119,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -545,7 +537,7 @@ footer {
   }
 }
 
-/*MEDIA QUERIES*/
+/*MEDIA QUERIES ADDED*/
 
 @media screen and (max-width: 1108px) {
 

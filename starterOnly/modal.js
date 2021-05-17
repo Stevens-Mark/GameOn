@@ -127,17 +127,6 @@ for (let i = 0; i < radioButtons.length; i++) {
   });
 }
 
-/*
-function RadioChecked(){
-var getSelectedValue = document.querySelectorAll( 'input[name="location"]:checked'); 
-if(getSelectedValue = null) {   
-  locationError.textContent = "Vous devez choisir une option.";
-  return false; 
-}else {  
-  locationError.textContent = "test";
-  return true;  }
-}*/
-
 function RadioChecked(){
   for (let i = 0; i < radioButtons.length; i++) {
       if (!radioButtons[i].checked) {
@@ -197,7 +186,6 @@ function validate() {
       return false;
     }
 return true;
-
 }
 
 function displayThanksMessage(){
@@ -205,12 +193,13 @@ function displayThanksMessage(){
   thanksmessage.style.display = "flex";
 }
 
-
 /*
-for (let i = 0; i < radioButtons.length; i++) {
-  if (!radioButtons[i].checked) {
-    locationError.textContent = "Vous devez choisir une option";
-  } else {
-    locationError.textContent = "";
-  }
+function RadioChecked(){
+var getSelectedValue = document.querySelectorAll( 'input[name="location"]:checked'); 
+if(getSelectedValue = null) {   
+  locationError.textContent = "Vous devez choisir une option.";
+  return false; 
+}else {  
+  locationError.textContent = "test";
+  return true;  }
 }*/
