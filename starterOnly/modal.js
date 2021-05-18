@@ -3,8 +3,7 @@ function editNav() {
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
-    x.className = "topnav";
-  }
+    x.className = "topnav";}
 }
 
 // DOM Elements
@@ -19,7 +18,7 @@ const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-let radioButtons = document.getElementsByName("location");
+const radioButtons = document.getElementsByName("location");
 
 // DOM Elements for error messages
 const firstNameError = document.getElementById("fnameError");
@@ -30,11 +29,13 @@ const quantityError = document.getElementById("quantityError");
 const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
 
-// DOM Elements for Form validation message
-const modalBody = document.querySelectorAll(".modal-body");
-const thanksMessage = document.getElementById("thanksmessage");
-
+//test DOM
 const testError = document.getElementById("testError");
+
+// DOM Elements for Form validation thankyou message
+const modalBody = document.querySelector(".modal-body");
+const message = document.getElementById("bgroundmsg");
+const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
 const nameRegex = /^[a-zA-Z]{2,30}$/;
@@ -43,8 +44,16 @@ const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// reset form inputs, error messages & launch modal form
 function launchModal() {
+  document.getElementById("form").reset();
+  firstNameError.textContent ="";
+  lastNameError.textContent ="";
+  emailError.textContent ="";
+  quantityError.textContent ="";
+  birthDateError.textContent ="";
+  conditionsError.textContent = "";
+  locationError.textContent = "";
   modalbg.style.display = "block";
 }
 
@@ -56,13 +65,26 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+//  close thankyou message event
+closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
+
+// close thankyou message & validate form inputs
+function closeMessage() {
+  message.style.display = "none";
+  /*return true;*/
+}
+
+/*const submitButton = document.querySelectorAll(".btn-submit");
+submitButton.addEventListener("click", ($event) => {
+  $event.preventDefault();
+ });*/
+
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
   if (!nameRegex.test(string)){
     name.textContent ="Veuillez entrer 2 caractères ou plus pour ce champ.";
   } else {
-    name.textContent ="";
-  } 
+    name.textContent ="";} 
 }
 
 // FIRSTNAME & LASTNAME EVENT LISTENERS
@@ -77,8 +99,7 @@ email.addEventListener("blur", ($event) => {
   if (!emailRegex.test($event.target.value)) {
     emailError.textContent ="Veuillez entrer une adresse e-mail valide.";
   } else {
-    emailError.textContent ="";
-  }
+    emailError.textContent ="";}
 });
 
 // CHECK BIRTHDAY ENTERED & VALID
@@ -120,38 +141,28 @@ quantity.addEventListener("blur", ($event) => {
 });
 
 //RADIO BUTTON EVENT LISTENERS
+  let selectedCity = 0;
 for (let i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener("change", ($event) => {
-    testError.textContent = $event.target.value;
-    RadioChecked();
+  selectedCity = $event.target.value;
+  testError.textContent = 'Vous avez choisi: '+ $event.target.value;
+    if (selectedCity !== 0) {
+      locationError.textContent = "";
+    }
   });
-}
-
-function RadioChecked(){
-  for (let i = 0; i < radioButtons.length; i++) {
-      if (!radioButtons[i].checked) {
-          locationError.textContent = "Vous devez choisir une option.";
-          return false;
-      } else {
-          locationError.textContent = "";
-          return true;
-        }
-  }
 }
 
 //POLICY CHECKBOX EVENT LISTENER
 document.getElementById("checkbox1").addEventListener("change", ($event) => {
   if (!$event.target.checked) {
     conditionsError.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
-  }
-  else {
-    conditionsError.textContent = "";
-  }
+  } else {
+    conditionsError.textContent = "";}
 });
 
 // FORM VALIDATION FUNCTION
 function validate() {
-    if (!firstName.value || !nameRegex.test(firstName.value)) {
+      if (!firstName.value || !nameRegex.test(firstName.value)) {
       fnameError.textContent ="Veuillez entrer votre prénom";
       firstName.focus();
       return false;
@@ -171,26 +182,42 @@ function validate() {
       birthdate.focus();
       return false;
     }
-    if (!quantity.value || quantity < 0 || quantity > 200){
+    if (!quantity.value || quantity.value < 0 || quantity.value > 200){
       quantityError.textContent = "Veuillez choisir un nombre entre 0 et 200.";
       quantity.focus();
       return false;
     }
-    if (!RadioChecked()) {
-        locationError.textContent = "Vous devez choisir une option.";
-        return false;
+    if (selectedCity === 0) {
+      locationError.textContent = "Vous devez choisir une option.";
+      return false;
+    } else{
+      locationError.textContent = "";
     }
     if (document.reserve.checkbox1.checked == false ) {
       conditionsError.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
-      document.reserve.birthdate.focus();
+      document.reserve.checkbox1.focus();
       return false;
     }
-return true;
+    return true;
 }
 
-function displayThanksMessage(){
-  modalBody.style.display = "none";
-  thanksmessage.style.display = "flex";
+
+/*
+function FireOnSubmit(){
+  if(validate() == true){
+    modalBody.style.display = "none";
+    message.style.display = "flex";
+    document.getElementById("form").reset();
+} else {   
+    return false;
+  }
+}
+
+
+/*
+function startValidate(){
+  validate();
+  document.forms['form'].submit();
 }
 
 /*
@@ -202,4 +229,16 @@ if(getSelectedValue = null) {
 }else {  
   locationError.textContent = "test";
   return true;  }
+}
+
+function RadioChecked(){
+  for (let i = 0; i < radioButtons.length; i++) {
+      if (!radioButtons[i].checked) {
+          locationError.textContent = "Vous devez choisir une option.";
+          return false;
+      } else {
+          locationError.textContent = "";
+          return true;
+        }
+  }
 }*/
