@@ -68,10 +68,11 @@ function closeModal() {
 //  close thankyou message event
 closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 
-// close thankyou message & validate form inputs
+// close thankyou message & send form data?
 function closeMessage() {
   message.style.display = "none";
-  /*return true;*/
+  /*return true;
+  document.forms['form'].submit();*/
 }
 
 /*const submitButton = document.querySelectorAll(".btn-submit");
@@ -198,11 +199,13 @@ function validate() {
       document.reserve.checkbox1.focus();
       return false;
     }
-    return true;
+    message.style.display = "flex";
+    return false;
 }
 
 
 /*
+
 function FireOnSubmit(){
   if(validate() == true){
     modalBody.style.display = "none";

@@ -51,7 +51,7 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
+  padding: 10px 10px;
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
@@ -221,7 +221,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: right ;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -244,6 +244,7 @@ input[data-error]::after {
   margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
+  text-align: left;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
@@ -614,6 +615,7 @@ main {
 .error {
   color: #ff0000;
   font-size: 15px;
+  text-align: left;
 }
 
 /*styling for the recieved message*/
