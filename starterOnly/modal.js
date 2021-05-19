@@ -17,7 +17,7 @@ const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
+const tournamentQuantity = document.getElementById("quantity");
 const radioButtons = document.getElementsByName("location");
 
 // DOM Elements for error messages
@@ -33,8 +33,8 @@ const conditionsError = document.getElementById("conditionsError");
 const testError = document.getElementById("testError");
 
 // DOM Elements for Form validation thankyou message
-const modalBody = document.querySelector(".modal-body");
-const message = document.getElementById("bgroundmsg");
+/*const modalBody = document.querySelector(".modal-body");*/
+const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
@@ -71,14 +71,8 @@ closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 // close thankyou message & send form data?
 function closeMessage() {
   message.style.display = "none";
-  /*return true;
-  document.forms['form'].submit();*/
+  /*document.forms['form'].submit();*/
 }
-
-/*const submitButton = document.querySelectorAll(".btn-submit");
-submitButton.addEventListener("click", ($event) => {
-  $event.preventDefault();
- });*/
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
@@ -131,12 +125,12 @@ return false;
 }
 
 // CHECK QUANTITY OF GameOn TOURNAMENTS PLAYED ENTERED IS VALID
-quantity.addEventListener("blur", ($event) => {
+tournamentQuantity.addEventListener("blur", ($event) => {
   let quantity = $event.target.value;
   if (quantity == ""){
     quantityError.textContent ="Vous devez choisir une option.";
-    } else if (quantity < 0 || quantity > 200) {
-        quantityError.textContent ="Veuillez choisir un nombre entre 0 et 200.";
+    } else if (quantity < 0 || quantity > 99) {
+        quantityError.textContent ="Veuillez choisir un nombre entre 0 et 99.";
       } else {
         quantityError.textContent ="";}
 });
@@ -183,12 +177,12 @@ function validate() {
       birthdate.focus();
       return false;
     }
-    if (!quantity.value || quantity.value < 0 || quantity.value > 200){
-      quantityError.textContent = "Veuillez choisir un nombre entre 0 et 200.";
-      quantity.focus();
+    if (!quantity.value || quantity.value < 0 || quantity.value > 99){
+      quantityError.textContent = "Veuillez choisir un nombre entre 0 et 99.";
+      tournamentQuantity.focus();
       return false;
     }
-    if (selectedCity === 0) {
+    if (selectedCity == 0) {
       locationError.textContent = "Vous devez choisir une option.";
       return false;
     } else{
@@ -245,3 +239,8 @@ function RadioChecked(){
         }
   }
 }*/
+
+/*const submitButton = document.querySelectorAll(".btn-submit");
+submitButton.addEventListener("click", ($event) => {
+  $event.preventDefault();
+ });*/
