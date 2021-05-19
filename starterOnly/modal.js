@@ -38,7 +38,7 @@ const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
-const nameRegex = /^[a-zA-Z]{2,30}$/;
+const nameRegex = /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ-]{2,30}$/;   /*  ^[a-zA-Z]{2,30}$/  /^[-\sa-zA-Z]+$/  */
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
