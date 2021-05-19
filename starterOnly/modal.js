@@ -38,7 +38,7 @@ const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
-const nameRegex = /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ-]{2,30}$/;   /*  ^[a-zA-Z]{2,30}$/  /^[-\sa-zA-Z]+$/  */
+const nameRegex = /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ-]{2,30}$/;   
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
@@ -73,10 +73,10 @@ function closeModal() {
 //  close thankyou message event
 closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 
-// close thankyou message & send form data?
+// close thankyou message & send form data
 function closeMessage() {
   message.style.display = "none";
-  /*document.forms['form'].submit();*/
+  document.forms['form'].submit();
 }
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
@@ -141,11 +141,9 @@ tournamentQuantity.addEventListener("blur", ($event) => {
 });
 
 //RADIO BUTTON EVENT LISTENERS
-  /*let selectedCity = 0;*/
 for (let i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener("change", ($event) => {
   selectedCity = $event.target.value;
-  /*testError.textContent = 'Vous avez choisi: '+ $event.target.value;*/
     if (selectedCity !== null) {
       locationError.textContent = "";
     }
@@ -198,6 +196,7 @@ function validate() {
       document.reserve.checkbox1.focus();
       return false;
     }
+    document.getElementById('form').style.display = "none";
     message.style.display = "flex";
     return false;
 }
@@ -215,35 +214,11 @@ function FireOnSubmit(){
   }
 }
 
-
 /*
 function startValidate(){
   validate();
   document.forms['form'].submit();
 }
-
-/*
-function RadioChecked(){
-var getSelectedValue = document.querySelectorAll( 'input[name="location"]:checked'); 
-if(getSelectedValue = null) {   
-  locationError.textContent = "Vous devez choisir une option.";
-  return false; 
-}else {  
-  locationError.textContent = "test";
-  return true;  }
-}
-
-function RadioChecked(){
-  for (let i = 0; i < radioButtons.length; i++) {
-      if (!radioButtons[i].checked) {
-          locationError.textContent = "Vous devez choisir une option.";
-          return false;
-      } else {
-          locationError.textContent = "";
-          return true;
-        }
-  }
-}*/
 
 /*const submitButton = document.querySelectorAll(".btn-submit");
 submitButton.addEventListener("click", ($event) => {
