@@ -41,6 +41,10 @@ const closeMessageBtn = document.querySelectorAll(".messageButton");
 const nameRegex = /^[a-zA-Z]{2,30}$/;
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+
+//Variable used for city location check
+let selectedCity = null;
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -50,8 +54,9 @@ function launchModal() {
   firstNameError.textContent ="";
   lastNameError.textContent ="";
   emailError.textContent ="";
-  quantityError.textContent ="";
   birthDateError.textContent ="";
+  quantityError.textContent ="";
+  selectedCity = null;
   conditionsError.textContent = "";
   locationError.textContent = "";
   modalbg.style.display = "block";
@@ -136,12 +141,12 @@ tournamentQuantity.addEventListener("blur", ($event) => {
 });
 
 //RADIO BUTTON EVENT LISTENERS
-  let selectedCity = 0;
+  /*let selectedCity = 0;*/
 for (let i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener("change", ($event) => {
   selectedCity = $event.target.value;
-  testError.textContent = 'Vous avez choisi: '+ $event.target.value;
-    if (selectedCity !== 0) {
+  /*testError.textContent = 'Vous avez choisi: '+ $event.target.value;*/
+    if (selectedCity !== null) {
       locationError.textContent = "";
     }
   });
@@ -182,7 +187,7 @@ function validate() {
       tournamentQuantity.focus();
       return false;
     }
-    if (selectedCity == 0) {
+    if (!selectedCity) {
       locationError.textContent = "Vous devez choisir une option.";
       return false;
     } else{
