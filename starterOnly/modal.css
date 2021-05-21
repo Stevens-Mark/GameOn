@@ -46,6 +46,7 @@ img {
 .main-navbar {
     float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -606,14 +607,13 @@ main {
   margin: 1px 10px 15px;
   }
 .hero-headline {
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .hero-content {
   min-width: 0px;
 }
 }
-
 
 /*ADDED STYLES*/
 

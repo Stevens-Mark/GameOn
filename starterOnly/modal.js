@@ -38,7 +38,7 @@ const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
-const nameRegex = /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ-]{2,30}$/;   
+const nameRegex =  /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]{2,30}$/       /* /^[a-zA-Z]+(?:-[a-zA-Z]+)*$/    /^[a-zA-Z]+( [a-zA-Z]+)+$/*/ 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
@@ -82,7 +82,7 @@ function closeMessage() {
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
   if (!nameRegex.test(string)){
-    name.textContent ="Veuillez entrer 2 caractères ou plus pour ce champ.";
+    name.textContent ="Veuillez entrer un minimum de 2 caractères (un seul mot).";   /*Veuillez entrer 2 caractères ou plus pour ce champ.*/
   } else {
     name.textContent ="";} 
 }
@@ -161,12 +161,12 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 // FORM VALIDATION FUNCTION
 function validate() {
       if (!firstName.value || !nameRegex.test(firstName.value)) {
-      fnameError.textContent ="Veuillez entrer votre prénom";
+      fnameError.textContent ="Veuillez entrer votre prénom (un seul mot)";
       firstName.focus();
       return false;
     }
     if (!lastName.value || !nameRegex.test(lastName.value)) {
-      lastnameError.textContent ="Veuillez entrer votre prénom";
+      lastnameError.textContent ="Veuillez entrer votre nom (un seul mot)";
       lastName.focus();
       return false;
     }
