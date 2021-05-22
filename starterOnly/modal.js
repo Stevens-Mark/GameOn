@@ -29,9 +29,6 @@ const quantityError = document.getElementById("quantityError");
 const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
 
-//test DOM
-const testError = document.getElementById("testError");
-
 // DOM Elements for Form validation thankyou message
 /*const modalBody = document.querySelector(".modal-body");*/
 const message = document.getElementById("messageBground");
@@ -39,9 +36,8 @@ const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
 const nameRegex = /^[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ](?:[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]|['](?=[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]))*$/;
-/* /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]{2,30}$/; or /^[A-zàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ](?:[A-zàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]|[-|'| ](?=[A-zàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]))*$   */ 
+/* /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]{2,30}$/; */ 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 
 //Variable used for city location check
 let selectedCity = null;
@@ -51,7 +47,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // reset form inputs, error messages & launch modal form
 function launchModal() {
-  document.getElementById("form").reset();
+  document.forms['form'].reset();
   firstNameError.textContent ="";
   lastNameError.textContent ="";
   emailError.textContent ="";
@@ -71,13 +67,12 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-//  close thankyou message event
+// close thankyou message event (data not sent as user changed mind)
 closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 
-// close thankyou message & send form data
+// close thankyou message
 function closeMessage() {
   message.style.display = "none";
-  document.forms['form'].submit();
 }
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
