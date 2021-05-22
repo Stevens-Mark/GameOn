@@ -67,12 +67,13 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// close thankyou message event (data not sent as user changed mind)
+// close thankyou message event
 closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 
-// close thankyou message
+// close thankyou message & data sent
 function closeMessage() {
   message.style.display = "none";
+  document.forms['form'].submit();
 }
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
