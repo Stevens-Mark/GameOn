@@ -115,8 +115,8 @@ function AgeNotValidate(birthday){
 let optimizedBirthday = birthday.replace(/-/g, "/");
 //set date based on birthday at 01:00:00 hours GMT+0100 
 let userBirthday = new Date(optimizedBirthday);
-// set current day on 01:00:00 hours GMT+0100 
-let currentDate = new Date().toJSON().slice(0,10)+' 01:00:00';
+/* set current day on 01:00:00 hours GMT+0100 
+let currentDate = new Date().toJSON().slice(0,10)+' 01:00:00';*/
 // calculate age comparing current date and birthday
 let userAge = ~~((Date.now() - userBirthday) / (31557600000));
 if(userAge < 13 || userAge > 100 ) {
@@ -157,13 +157,13 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 
 // FORM VALIDATION FUNCTION
 function validate() {
-      if (!firstName.value || !nameRegex.test(firstName.value)) {
-      fnameError.textContent ="Veuillez entrer votre prénom (un seul mot)";
+    if (!firstName.value || !nameRegex.test(firstName.value)) {
+      firstNameError.textContent ="Veuillez entrer votre prénom (un seul mot)";
       firstName.focus();
       return false;
     }
     if (!lastName.value || !nameRegex.test(lastName.value)) {
-      lastnameError.textContent ="Veuillez entrer votre nom (un seul mot)";
+      lastNameError.textContent ="Veuillez entrer votre nom (un seul mot)";
       lastName.focus();
       return false;
     }
@@ -177,7 +177,7 @@ function validate() {
       birthdate.focus();
       return false;
     }
-    if (!quantity.value || quantity.value < 0 || quantity.value > 99){
+    if (!tournamentQuantity.value || tournamentQuantity.value < 0 || tournamentQuantity.value > 99){
       quantityError.textContent = "Veuillez choisir un nombre entre 0 et 99.";
       tournamentQuantity.focus();
       return false;
