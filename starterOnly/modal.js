@@ -47,7 +47,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // reset form inputs, error messages & launch modal form
 function launchModal() {
-  document.forms['form'].reset();
+  document.getElementById("form").reset();
   firstNameError.textContent ="";
   lastNameError.textContent ="";
   emailError.textContent ="";
@@ -73,7 +73,7 @@ closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 // close thankyou message & data sent
 function closeMessage() {
   message.style.display = "none";
-  document.forms['form'].submit();
+  document.getElementById("form").submit();
 }
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
@@ -86,10 +86,10 @@ function checkString(string, name){
 
 // FIRSTNAME & LASTNAME EVENT LISTENERS
 firstName.addEventListener("blur", ($event) => {
-  checkString($event.target.value, firstNameError)});
+  checkString($event.target.value, firstNameError);});
 
 lastName.addEventListener("blur", ($event) => {
-  checkString($event.target.value, lastNameError)});
+  checkString($event.target.value, lastNameError);});
 
 // CHECK EMAIL IS VALID
 email.addEventListener("blur", ($event) => {
