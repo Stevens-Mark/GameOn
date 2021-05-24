@@ -35,8 +35,7 @@ const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
-const nameRegex = /^[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ](?:[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]|['](?=[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]))*$/;
-/* /^[a-zA-ZàâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]{2,30}$/; */ 
+const nameRegex = /^[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ](?:[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]|['| |-](?=[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]))*$/;
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 //Variable used for city location check
@@ -45,9 +44,8 @@ let selectedCity = null;
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// reset form inputs, error messages & launch modal form
+// reset error messages & launch modal form
 function launchModal() {
-  document.getElementById("form").reset();
   firstNameError.textContent ="";
   lastNameError.textContent ="";
   emailError.textContent ="";
@@ -115,8 +113,6 @@ function AgeNotValidate(birthday){
 let optimizedBirthday = birthday.replace(/-/g, "/");
 //set date based on birthday at 01:00:00 hours GMT+0100 
 let userBirthday = new Date(optimizedBirthday);
-/* set current day on 01:00:00 hours GMT+0100 
-let currentDate = new Date().toJSON().slice(0,10)+' 01:00:00';*/
 // calculate age comparing current date and birthday
 let userAge = ~~((Date.now() - userBirthday) / (31557600000));
 if(userAge < 13 || userAge > 100 ) {
@@ -156,7 +152,8 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 });
 
 // FORM VALIDATION FUNCTION
-function validate() {
+function validate(event) {
+    event.preventDefault();
     if (!firstName.value || !nameRegex.test(firstName.value)) {
       firstNameError.textContent ="Veuillez entrer votre prénom (un seul mot)";
       firstName.focus();
@@ -195,29 +192,5 @@ function validate() {
     }
     document.getElementById('form').style.display = "none";
     message.style.display = "flex";
-    return false;
-}
-
-
-/*
-
-function FireOnSubmit(){
-  if(validate() == true){
-    modalBody.style.display = "none";
-    message.style.display = "flex";
     document.getElementById("form").reset();
-} else {   
-    return false;
-  }
 }
-
-/*
-function startValidate(){
-  validate();
-  document.forms['form'].submit();
-}
-
-/*const submitButton = document.querySelectorAll(".btn-submit");
-submitButton.addEventListener("click", ($event) => {
-  $event.preventDefault();
- });*/
