@@ -30,7 +30,6 @@ const locationError = document.getElementById("locationError");
 const conditionsError = document.getElementById("conditionsError");
 
 // DOM Elements for Form validation thankyou message
-/*const modalBody = document.querySelector(".modal-body");*/
 const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
@@ -55,6 +54,7 @@ function launchModal() {
   conditionsError.textContent = "";
   locationError.textContent = "";
   modalbg.style.display = "block";
+  document.getElementById('form').style.display = "block";
 }
 
 //  close modal event
@@ -68,10 +68,9 @@ function closeModal() {
 // close thankyou message event
 closeMessageBtn.forEach((btn) => btn.addEventListener("click", closeMessage));
 
-// close thankyou message & data sent
+// close thankyou message
 function closeMessage() {
   message.style.display = "none";
-  document.getElementById("form").submit();
 }
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
@@ -91,7 +90,7 @@ lastName.addEventListener("blur", ($event) => {
 
 // CHECK EMAIL IS VALID
 email.addEventListener("blur", ($event) => {
-  if (!emailRegex.test($event.target.value)) {
+  if (!emailRegex.test($event.target.value.trim())) {
     emailError.textContent ="Veuillez entrer une adresse e-mail valide.";
   } else {
     emailError.textContent ="";}
@@ -164,7 +163,7 @@ function validate(event) {
       lastName.focus();
       return false;
     }
-    if (!email.value || !emailRegex.test(email.value)) {
+    if (!email.value || !emailRegex.test(email.value.trim())) {
       emailError.textContent ="Veuillez entrer votre adresse e-mail";
       email.focus();
       return false;
@@ -192,5 +191,5 @@ function validate(event) {
     }
     document.getElementById('form').style.display = "none";
     message.style.display = "flex";
-    
+    document.getElementById('form').reset();
 }
