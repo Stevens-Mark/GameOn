@@ -192,5 +192,5 @@ function validate(event) {
     }
     document.getElementById('form').style.display = "none";
     message.style.display = "flex";
-    document.getElementById("form").reset();
+    
 }
