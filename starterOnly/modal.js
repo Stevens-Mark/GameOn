@@ -76,7 +76,7 @@ function closeMessage() {
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
-  if (!nameRegex.test(string)){
+  if (!nameRegex.test(string.trim())){
     name.textContent ="Veuillez entrer un minimum de 2 caractères (pas de caractères spéciaux).";   /*Veuillez entrer 2 caractères ou plus pour ce champ.*/
   } else {
     name.textContent ="";} 
@@ -154,12 +154,12 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 // FORM VALIDATION FUNCTION
 function validate(event) {
     event.preventDefault();
-    if (!firstName.value || !nameRegex.test(firstName.value)) {
+    if (!firstName.value || !nameRegex.test(firstName.value.trim())) {
       firstNameError.textContent ="Veuillez entrer votre prénom (pas de caractères spéciaux)";
       firstName.focus();
       return false;
     }
-    if (!lastName.value || !nameRegex.test(lastName.value)) {
+    if (!lastName.value || !nameRegex.test(lastName.value.trim())) {
       lastNameError.textContent ="Veuillez entrer votre nom (pas de caractères spéciaux)";
       lastName.focus();
       return false;
