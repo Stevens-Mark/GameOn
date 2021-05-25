@@ -34,7 +34,7 @@ const message = document.getElementById("messageBground");
 const closeMessageBtn = document.querySelectorAll(".messageButton");
 
 //Patterns for name & email validation checks
-const nameRegex = /^[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ](?:[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]|['| |-](?=[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]))*$/;
+const nameRegex =/^[a-zA-Z]+(?:\s[a-zA-Z'-]+)*\s?$/ /* /^[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ](?:[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]|['| |-](?=[A-zàâäèéêëîïôöœùûüÿğçÀÂÄÈÉÊËÎÏÔÖŒÙÛÜŸÇĞ]))*$/;*/
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 //Variable used for city location check
@@ -75,7 +75,7 @@ function closeMessage() {
 
 // CHECK FIRST & LAST NAMES ARE VALID FUNCTION
 function checkString(string, name){
-  if (!nameRegex.test(string.trim())){
+  if (!nameRegex.test(string.trim()) || string.length < 2){
     name.textContent ="Veuillez entrer un minimum de 2 caractères (pas de caractères spéciaux).";   /*Veuillez entrer 2 caractères ou plus pour ce champ.*/
   } else {
     name.textContent ="";} 
@@ -83,10 +83,10 @@ function checkString(string, name){
 
 // FIRSTNAME & LASTNAME EVENT LISTENERS
 firstName.addEventListener("blur", ($event) => {
-  checkString($event.target.value, firstNameError);});
+  checkString($event.target.value.trim(), firstNameError);});
 
 lastName.addEventListener("blur", ($event) => {
-  checkString($event.target.value, lastNameError);});
+  checkString($event.target.value.trim(), lastNameError);});
 
 // CHECK EMAIL IS VALID
 email.addEventListener("blur", ($event) => {
@@ -153,12 +153,12 @@ document.getElementById("checkbox1").addEventListener("change", ($event) => {
 // FORM VALIDATION FUNCTION
 function validate(event) {
     event.preventDefault();
-    if (!firstName.value || !nameRegex.test(firstName.value.trim())) {
+    if (!firstName.value || !nameRegex.test(firstName.value.trim()) || firstName.value.trim() < 2) {
       firstNameError.textContent ="Veuillez entrer votre prénom (pas de caractères spéciaux)";
       firstName.focus();
       return false;
     }
-    if (!lastName.value || !nameRegex.test(lastName.value.trim())) {
+    if (!lastName.value || !nameRegex.test(lastName.value.trim()) || lastName.value.trim() < 2) {
       lastNameError.textContent ="Veuillez entrer votre nom (pas de caractères spéciaux)";
       lastName.focus();
       return false;
