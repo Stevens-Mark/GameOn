@@ -83,10 +83,10 @@ function checkString(string, name){
 
 // FIRSTNAME & LASTNAME EVENT LISTENERS
 firstName.addEventListener("blur", ($event) => {
-  checkString($event.target.value.trim(), firstNameError);});
+  checkString($event.target.value, firstNameError);});
 
 lastName.addEventListener("blur", ($event) => {
-  checkString($event.target.value.trim(), lastNameError);});
+  checkString($event.target.value, lastNameError);});
 
 // CHECK EMAIL IS VALID
 email.addEventListener("blur", ($event) => {
@@ -133,6 +133,14 @@ tournamentQuantity.addEventListener("blur", ($event) => {
 });
 
 //RADIO BUTTON EVENT LISTENERS
+  radioButtons.forEach((btn) => btn.addEventListener("change", ($event) => {
+  selectedCity = $event.target.value;
+    if (selectedCity !== null) {
+      locationError.textContent = "";
+    }
+}));
+
+/*
 for (let i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener("change", ($event) => {
   selectedCity = $event.target.value;
@@ -140,7 +148,7 @@ for (let i = 0; i < radioButtons.length; i++) {
       locationError.textContent = "";
     }
   });
-}
+}*/
 
 //POLICY CHECKBOX EVENT LISTENER
 document.getElementById("checkbox1").addEventListener("change", ($event) => {
