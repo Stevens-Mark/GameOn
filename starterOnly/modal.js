@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-unused-vars */
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
