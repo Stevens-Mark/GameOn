@@ -16,7 +16,7 @@ For more information (scenario, etc.) on this project, please see the "Project b
 
 •	Languages: CSS3 & JavaScript
 
-Competencies assessed
+Competences assessed
 
 •	 Programming in JavaScript
 
