@@ -26,7 +26,7 @@ GameOn, specialized in game conferences and contests.
 
 -	Languages: CSS3 & JavaScript
 
-
+## Resources
 - The mock up can be found here: [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
 - Further information (scenario, etc.) on this project, please see the the folder `Project Briefs`
 
@@ -69,6 +69,7 @@ GameOn, spécialisée dans les conférences et les concours de jeux.
 
 -	Langues : CSS3 et JavaScript
 
+## Ressources
 - La maquette se trouve ici : [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
 - Pour plus d'informations (scénario, etc.) sur ce projet, veuillez consulter le dossier `Project Briefs`
 
