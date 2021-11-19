@@ -15,11 +15,6 @@ GameOn, specialized in game conferences and contests.
 ### Objective :
 - Take over and complete the front end & add the missing JavaScript code to make the form fully functional.
 
-
-- [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
-- Further information (scenario, etc.) on this project, please see the the folder `Project Briefs`
-
-
 ## Technical constraints
 
 - Only use custom CSS and pure JavaScript, without jQuery, Bootstrap or other libraries
@@ -30,6 +25,10 @@ GameOn, specialized in game conferences and contests.
 - Manually test the functionality, form inputs and responsive display.
 
 -	Languages: CSS3 & JavaScript
+
+
+- The mock up can be found here: [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
+- Further information (scenario, etc.) on this project, please see the the folder `Project Briefs`
 
 
 ## Competencies assessed
@@ -59,11 +58,6 @@ GameOn, spécialisée dans les conférences et les concours de jeux.
 ### Objectif :
 - Reprendre et compléter le front end & ajouter le code JavaScript manquant pour rendre le formulaire entièrement fonctionnel.
 
-
-- [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
-- Pour plus d'informations (scénario, etc.) sur ce projet, veuillez consulter le dossier `Project Briefs`
-
-
 ## Contraintes techniques
 
 - N'utilisez que des CSS personnalisés et du JavaScript pur, sans jQuery, Bootstrap ou autres bibliothèques.
@@ -73,8 +67,10 @@ GameOn, spécialisée dans les conférences et les concours de jeux.
 - Toujours commenter le code (décrire chaque fonction et classe, ainsi que les parties du code qui nécessitent plus de détails) ;
 - Tester manuellement les fonctionnalités, les entrées de formulaire et l'affichage réactif.
 
-
 -	Langues : CSS3 et JavaScript
+
+- La maquette se trouve ici : [Figma](https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1)
+- Pour plus d'informations (scénario, etc.) sur ce projet, veuillez consulter le dossier `Project Briefs`
 
 
 ## Installer et exécuter le projet
