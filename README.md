@@ -1,5 +1,5 @@
 
-![GameOn](/starterOnly/Logo.png)
+![GameOn](Logo.png)
 
 # OPENCLASSROOMS PROJECT 4 *(English)*
 
