@@ -3,6 +3,9 @@
 
 # OPENCLASSROOMS PROJECT 4 *(English)*
 
+## GameON ## 
+Open website at Git pages:  https://stevens-mark.github.io/StevensMark_P4_06052021/
+
 ## Create a landing page with Javascript 
 
 (This project is part of the "Front-End Developer" training by OpenClassrooms).
@@ -45,6 +48,9 @@ GameOn, specialized in game conferences and contests.
 
 
 # OPENCLASSROOMS PROJECT 4 *(Français)*
+
+## GameON ## 
+Ouvrir le site web aux pages Git:  https://stevens-mark.github.io/StevensMark_P4_06052021/
 
 ## Créez une landing page avec Javascript 
 
