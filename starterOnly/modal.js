@@ -1,5 +1,5 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-useless-escape *//* eslint-disable no-unused-vars */
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -141,16 +141,6 @@ tournamentQuantity.addEventListener("blur", ($event) => {
       locationError.textContent = "";
     }
 }));
-
-/*
-for (let i = 0; i < radioButtons.length; i++) {
-  radioButtons[i].addEventListener("change", ($event) => {
-  selectedCity = $event.target.value;
-    if (selectedCity !== null) {
-      locationError.textContent = "";
-    }
-  });
-}*/
 
 //POLICY CHECKBOX EVENT LISTENER
 document.getElementById("checkbox1").addEventListener("change", ($event) => {
