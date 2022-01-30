@@ -9,8 +9,6 @@ Open website at [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/
 
 ## Create a landing page with Javascript 
 
-(This project is part of the "Front-End Developer" training by OpenClassrooms).
-
 GameOn, specialized in game conferences and contests.
 
 ### Scenario:
@@ -54,8 +52,6 @@ GameOn, specialized in game conferences and contests.
 Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
 
 ## Créez une landing page avec Javascript 
-
-(Ce projet fait partie de la formation "Développeur Front-End" d'OpenClassrooms)
 
 GameOn, spécialisée dans les conférences et les concours de jeux.
 
