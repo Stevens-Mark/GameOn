@@ -1,9 +1,10 @@
 
 ![GameOn](/starterOnly/Logo.png)
 
-# OPENCLASSROOMS PROJECT 4 *(English)*
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5960d81c-ee20-4b01-b854-d1227e809ba0/deploy-status)](https://app.netlify.com/sites/sportsee2021/deploys)
+Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
 
-## GameON ## 
+# GameON 
 
 Open website at [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
 
@@ -33,7 +34,7 @@ GameOn, specialized in game conferences and contests.
 - Further information (scenario, etc.) on this project, please see the the folder `Project Briefs`
 
 
-## Competencies assessed
+## Competencies
 
 - [x] Programming in JavaScript
 
@@ -46,9 +47,9 @@ GameOn, specialized in game conferences and contests.
 
 
 
-# OPENCLASSROOMS PROJECT 4 *(Français)*
+# GameON 
 
-## GameON ## 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5960d81c-ee20-4b01-b854-d1227e809ba0/deploy-status)](https://app.netlify.com/sites/sportsee2021/deploys)
 Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
 
 ## Créez une landing page avec Javascript 
@@ -84,6 +85,6 @@ GameOn, spécialisée dans les conférences et les concours de jeux.
 3. Exécutez le projet : Ouvrez `index.html`
 
 
-## Compétences évaluées
+## Compétences
 
 - [x]	Programmer en JavaScript
