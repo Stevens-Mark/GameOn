@@ -1,12 +1,12 @@
 
 ![GameOn](/starterOnly/Logo.png)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5960d81c-ee20-4b01-b854-d1227e809ba0/deploy-status)](https://app.netlify.com/sites/sportsee2021/deploys)
+
 Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
 
 # GameON 
 
-Open website at [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
+Open website at [GameOn](https://stevens-mark.github.io/GameOn/)
 
 ## Create a landing page with Javascript 
 
@@ -49,8 +49,7 @@ GameOn, specialized in game conferences and contests.
 
 # GameON 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5960d81c-ee20-4b01-b854-d1227e809ba0/deploy-status)](https://app.netlify.com/sites/sportsee2021/deploys)
-Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
+Ouvrir le site web à [GameOn](https://stevens-mark.github.io/GameOn/)
 
 ## Créez une landing page avec Javascript 
 
