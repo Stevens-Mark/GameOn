@@ -2,8 +2,6 @@
 ![GameOn](/starterOnly/Logo.png)
 
 
-Ouvrir le site web à [GameOn](https://stevens-mark.github.io/StevensMark_P4_06052021/)
-
 # GameON 
 
 Open website at [GameOn](https://stevens-mark.github.io/GameOn/)
